@@ -23,30 +23,31 @@ const HomePage: React.FC = ()=> {
 
   // hook to run only on first page render use to populate dogDataList from api
   useEffect(() => {
-    checkUserLoginStatus();
+  checkUserLoginStatus();
   fetchDogData();
 }, [])
   
 //Base path for API
-  const API_BASE = 'https://dogs-backend-hwgz.onrender.com/api/breeds';
+  const API_BASE = 'https://dogs-backend-xijv.onrender.com/api';
 
   //Helper function to check user login status
   const checkUserLoginStatus=async()=>{
-    const response = await fetch('/api/get-credentials', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-      const result= await response.json()
-      setIsLoggedIn(result.data.isLoggedIn)
+
+    const res = await fetch(`${API_BASE}/verifylogin`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+      const result= await res.json()
+      console.log(result)
+
+      setIsLoggedIn(result.isLoggedIn)
   }
 
 //Start of API call helper function
 
 //Delete Dog Data
  const deleteBreed = async (breed: string) => {
-  const res = await fetch(`${API_BASE}/${breed}`, { method: 'DELETE' });
+  const res = await fetch(`${API_BASE}/breeds/${breed}`, { method: 'DELETE' });
   if (!res.ok) return 'error';
   else
   return 'success'
@@ -55,7 +56,7 @@ const HomePage: React.FC = ()=> {
 //Fetch Dog Data i.e., Retrieving data from dogs.json
 const fetchDogData = async () => {
     try {
-      const response = await fetch(API_BASE); // Your backend
+      const response = await fetch(`${API_BASE}/breeds`); // Your backend
       const data = await response.json();
 
       // Transform data to DogData[]
@@ -76,7 +77,7 @@ const fetchDogData = async () => {
   const handleAddDog = async (name: string, breedList: string[]) => {
   setAddDog(false);
   
-    const response = await fetch(API_BASE, {
+    const response = await fetch(`${API_BASE}/breeds`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ breed: name, subBreeds: breedList }),
@@ -102,7 +103,7 @@ const fetchDogData = async () => {
  const handleEditDog = async (oldDogData: DogData, newDogData: DogData) => {
   setEditDog({ dogData: { DogName: "", BreedList: [] }, open: false });
 
-  const res = await fetch(`${API_BASE}/${oldDogData.DogName}/subbreeds`, {
+  const res = await fetch(`${API_BASE}/breeds/${oldDogData.DogName}/subbreeds`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ subBreeds: newDogData.BreedList}),

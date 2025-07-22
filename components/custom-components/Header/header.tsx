@@ -5,13 +5,15 @@ import NextLink from "next/link"
 import { headerProps } from "./header.types";
 import { useRouter } from "next/router";
 
+const API_BASE = 'https://dogs-backend-xijv.onrender.com/api';
+
 const Header:React.FC<headerProps>=({
     title,
     isLoggedIn
 })=>{
      const router = useRouter(); 
     const handleLogout=async ()=>{
-         const response = await fetch('/api/logout', {
+         const response = await fetch(`${API_BASE}/logout`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -8,13 +8,14 @@ import { Toaster, toaster } from "@/components/ui/toaster"
 
 const LoginPage: React.FC = () =>{
 const router = useRouter(); // Initialize useRouter
+const API_BASE = 'https://dogs-backend-xijv.onrender.com/api';
 
   const handleLoginFormSubmit = async (email: string, password: string) => {
       const userCredentials = {
         email: email,
         password: password,
       };
-      const response = await fetch('/api/update-credential', {
+      const response = await fetch(`${API_BASE}/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

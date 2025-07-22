@@ -146,7 +146,7 @@ As a user, you can:
 
 ➕ Add a new dog breed (with optional sub-breeds)
 
-📝 Rename a sub-breed to and existing dog breed
+📝 Rename a sub-breed to an existing dog breed
 
 ❌ Delete a dog breed or sub-breed
 

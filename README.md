@@ -135,7 +135,23 @@ const preview: Preview = {
 
 export default preview;
 ```
-## interact with the system (User POV)
-### login credential
- userName: test@gmail.com
- password: abcdef
+## 🐾 User Guide
+Visit the live app here 👉 https://dogs-ui.vercel.app/
+
+As a user, you can:
+
+✅ View the list of dog breeds and their sub-breeds — no login required
+
+🔐 Log in to manage dog breeds:
+
+➕ Add a new dog breed (with optional sub-breeds)
+
+📝 Rename a sub-breed to and existing dog breed
+
+❌ Delete a dog breed or sub-breed
+
+🧪 Demo Login
+Use this demo account to access the full functionality:
+
+Username: test@gmail.com  
+Password: abcdef

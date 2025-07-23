@@ -136,6 +136,7 @@ const preview: Preview = {
 export default preview;
 ```
 ## 🐾 User Guide
+First visit the backend server link to make it live at https://dogs-backend-xijv.onrender.com
 Visit the live app here 👉 https://dogs-ui.vercel.app/
 
 As a user, you can:
